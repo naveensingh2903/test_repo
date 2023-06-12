@@ -1,4 +1,6 @@
 --SQL monitoring queries
+--Added one more code
+select * from sys.dm_exec_requests where session_id in (select session_id from sys.dm_exec_sessions where is_user_process=1)
 ---------------------------------------------------------------------------------------------
 --Select @@version 
 Microsoft SQL Server 2019 (RTM-CU12) (KB5004524) - 15.0.4153.1 (X64)   Jul 19 2021 15:37:34   Copyright (C) 2019 Microsoft Corporation  Enterprise Edition: Core-based Licensing (64-bit) on Windows Server 2016 Datacenter 10.0 <X64> (Build 14393: ) (Hypervisor) 
