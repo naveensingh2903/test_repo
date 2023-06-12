@@ -1,0 +1,43 @@
+------------------------------------------------------------------------------------------------------
+--Table creation
+create table student (id int,var1 varchar(100),var2 varchar(100),var3 varchar(100))
+------------------------------------------------------------------------------------------------------
+--Insert sample value
+insert into student values (1,'aa','gg','cc')
+------------------------------------------------------------------------------------------------------
+--sample while loop
+declare @id int 
+select @id = 1 
+while @id >=1 and @id <= 1000 
+begin 
+insert into student values(@id, 'jack' + convert(varchar(5), @id), 12) 
+select @id = @id + 1 
+end
+------------------------------------------------------------------------------------------------------
+--Create procedure
+Create procedure table_insert @max int
+as begin
+truncate table student 
+declare @x int
+--declare @max int
+declare @var1 varchar(100)
+declare @var2 varchar(100)
+declare @var3 varchar(100)
+--set @max=10000
+set @x=1
+while @x<=@max 
+begin 
+set @var1=concat('AAA',@x)
+set @var2=concat('BBB',@x)
+set @var3=concat('CCC',@x)
+insert into student values (@x,@var1,@var2,@var3)
+set @x=@x+1
+end 
+end 
+------------------------------------------------------------------------------------------------------
+--Exec the proc with parameter
+exec table_insert 100000
+------------------------------------------------------------------------------------------------------
+--check table count
+select count(*) from student 
+------------------------------------------------------------------------------------------------------
