@@ -1,3 +1,6 @@
+--Testing git 
+select * from sys.dm_exec_sessions where session_id between 100 and 120 
+
 --32 different datatypes 
 select distinct ty.name from sys.columns col join sys.types ty on col.system_type_id=ty.system_type_id 
 where col.object_id in (select distinct object_id from sys.objects 
